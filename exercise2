@@ -1,0 +1,160 @@
+#Jessie Gentles, Emily Stevenson, Jovonah Kramer, and Morghan Jones
+#Assignment: Exercise 04: Dictionary in Python
+#Group 8
+#Date: 3/2/2024
+#A program that decrypts messages using ROT-13 and uses the
+#International Civil Aviation Organization (ICAO) alphabet
+#to create code words for that message.
+"""
+Part 1
+"""
+"""Key for ROT-13 in a dictionary"""
+dict1 = {
+    'a': 'n',
+    'b': 'o',
+    'c': 'p',
+    'd': 'q',
+    'e': 'r',
+    'f': 's',
+    'g': 't',
+    'h': 'u',
+    'i': 'v',
+    'j': 'w',
+    'k': 'x',
+    'l': 'y',
+    'm': 'z',
+    'n': 'a',
+    'o': 'b',
+    'p': 'c',
+    'q': 'd',
+    'r': 'e',
+    's': 'f',
+    't': 'g',
+    'u': 'h',
+    'v': 'i',
+    'w': 'j',
+    'x': 'k',
+    'y': 'l',
+    'z': 'm',
+    'A': 'N',
+    'B': 'O',
+    'C': 'P',
+    'D': 'Q',
+    'E': 'R',
+    'F': 'S',
+    'G': 'T',
+    'H': 'U',
+    'I': 'V',
+    'J': 'W',
+    'K': 'X',
+    'L': 'Y',
+    'M': 'Z',
+    'N': 'A',
+    'O': 'B',
+    'P': 'C',
+    'Q': 'D',
+    'R': 'E',
+    'S': 'F',
+    'T': 'G',
+    'U': 'H',
+    'V': 'I',
+    'W': 'J',
+    'X': 'K',
+    'Y': 'L',
+    'Z': 'M'
+}
+"""
+This function takes an encrypted string and returns a new decrypted 
+string with the corresponding key from the dictionary given above.
+
+@param: message is the string that is being decrypted
+@return: word is the decrypted string
+"""
+
+
+def decrypt_caesar(message):
+  # Changes all letters in the given word to an array of characters
+  # This will match the given dictionary for the decryption
+  array = list(message)
+  word = ""
+  # Loop through the array of characters to find the corresponding letter
+  # If the letter is not in the dictionary, it will be added as is to the word
+  for letter in array:
+    if not letter.isalpha():
+      word += letter
+    else:
+      word += dict1[letter]
+  # Print and return the decrypted word
+  print("\nPart 1:\n\n" + word + "\n")
+  return word
+
+
+"""
+Part 2
+"""
+"""
+International Civil Aviation Organization (ICAO) alphabet as a dictionary
+"""
+dict2 = {
+    'a': 'alfa',
+    'b': 'bravo',
+    'c': 'charlie',
+    'd': 'delta',
+    'e': 'echo',
+    'f': 'foxtrot',
+    'g': 'golf',
+    'h': 'hotel',
+    'i': 'india',
+    'j': 'juliett',
+    'k': 'kilo',
+    'l': 'lima',
+    'm': 'mike',
+    'n': 'november',
+    'o': 'oscar',
+    'p': 'papa',
+    'q': 'quebec',
+    'r': 'romeo',
+    's': 'sierra',
+    't': 'tango',
+    'u': 'uniform',
+    'v': 'victor',
+    'w': 'whiskey',
+    'x': 'x-ray',
+    'y': 'yankee',
+    'z': 'zulu'
+}
+"""
+This function takes a string and returns a new string with the 
+International Civil Aviation Organization (ICAO) alphabet.
+This assigns code words from the given dictionary above.
+
+@param: word is the string that is being put into code words
+"""
+
+
+def code_words(word):
+  # Changes all letters in the given word to an array of lowercase letters
+  # This will match the given dictionary for the code words
+  array = list(word.lower().strip())
+  new_word = ""
+  # Loop through the array to find the corresponding ICAO code for each letter
+  #If the letter is not in the dictionary, it will be added to the new word as "None"
+  for letter in array:
+    if not letter.isalpha():
+      new_word += "None"
+    else:
+      new_word += dict2[letter]
+    new_word += "\n"
+    # Prints the new word with the ICAO code for each letter
+  print("Part 2:\n" + new_word)
+
+
+# Receives the encrypted message from the user
+user_input = input("Enter the encrypted text: ")
+
+# Calls the decrypt_caesar function to decrypt the message using the ROT-13 cipher
+word = decrypt_caesar(user_input)
+
+# Calls the code_words function to translate the decrypted message
+# using the ICAO code to code words
+code_words(word)
